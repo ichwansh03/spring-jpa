@@ -4,6 +4,7 @@
 
         <!--Entity Class-->
         <class>com.ichwan.jpa.entity.Customer</class>
+        <class>com.ichwan.jpa.entity.Category</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

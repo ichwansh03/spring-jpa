@@ -13,4 +13,11 @@ public class Customer {
     private String id;
 
     private String name;
+
+    @Column(name = "primary_email")
+    private String primaryEmail;
+
+    private Boolean married;
+
+    private Byte age;
 }

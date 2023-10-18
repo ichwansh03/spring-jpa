@@ -27,6 +27,9 @@ class CrudTest {
         Customer customer = new Customer();
         customer.setId("1");
         customer.setName("Ichwan");
+        customer.setPrimaryEmail("ichwan@test.com");
+        customer.setMarried(false);
+        customer.setAge((byte) 20);
 
         Assertions.assertNotNull(customer);
         entityManager.persist(customer);
