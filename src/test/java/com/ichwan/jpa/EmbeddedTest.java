@@ -1,5 +1,7 @@
 package com.ichwan.jpa;
 
+import com.ichwan.jpa.entity.Department;
+import com.ichwan.jpa.entity.DepartmentId;
 import com.ichwan.jpa.entity.embedded.Member;
 import com.ichwan.jpa.entity.embedded.Name;
 import com.ichwan.jpa.util.JpaUtil;
@@ -36,6 +38,27 @@ class EmbeddedTest {
 
         Assertions.assertNotNull(member);
         entityManager.persist(member);
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
+
+    @Test
+    void insertDataEmbeddedId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        DepartmentId id = new DepartmentId();
+        id.setCompanyId("C1");
+        id.setDepartmentId("D1");
+
+        Department department = new Department();
+        department.setId(id);
+        department.setName("Fintech");
+
+        Assertions.assertNotNull(department);
+        entityManager.persist(department);
 
         entityTransaction.commit();
         entityManager.close();
