@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CrudTest {
+class CrudTest extends ValidateContract{
     
     private EntityManagerFactory entityManagerFactory;
 
@@ -33,6 +33,7 @@ class CrudTest {
         customer.setAge((byte) 29);
         customer.setGender(CustomerGender.MALE);
 
+        validate(customer);
         Assertions.assertNotNull(customer);
         entityManager.persist(customer);
 
