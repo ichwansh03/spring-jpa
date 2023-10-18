@@ -20,4 +20,7 @@ public class Customer {
     private Boolean married;
 
     private Byte age;
+
+    @Enumerated(EnumType.STRING)
+    private CustomerGender gender;
 }

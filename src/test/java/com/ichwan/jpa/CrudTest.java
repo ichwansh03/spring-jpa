@@ -1,6 +1,7 @@
 package com.ichwan.jpa;
 
 import com.ichwan.jpa.entity.Customer;
+import com.ichwan.jpa.entity.CustomerGender;
 import com.ichwan.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -25,11 +26,12 @@ class CrudTest {
         entityTransaction.begin();
 
         Customer customer = new Customer();
-        customer.setId("1");
-        customer.setName("Ichwan");
-        customer.setPrimaryEmail("ichwan@test.com");
-        customer.setMarried(false);
-        customer.setAge((byte) 20);
+        customer.setId("2");
+        customer.setName("Ujang");
+        customer.setPrimaryEmail("ujang@test.com");
+        customer.setMarried(true);
+        customer.setAge((byte) 29);
+        customer.setGender(CustomerGender.MALE);
 
         Assertions.assertNotNull(customer);
         entityManager.persist(customer);
