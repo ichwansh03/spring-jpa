@@ -1,7 +1,5 @@
 package com.ichwan.jpa;
 
-import com.ichwan.jpa.entity.Customer;
-import com.ichwan.jpa.entity.CustomerGender;
 import com.ichwan.jpa.entity.embedded.Member;
 import com.ichwan.jpa.entity.embedded.Name;
 import com.ichwan.jpa.util.JpaUtil;
@@ -13,8 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class CollectionTest {
+class CollectionTest {
     private EntityManagerFactory entityManagerFactory;
 
     @BeforeEach
@@ -41,9 +40,27 @@ public class CollectionTest {
         member.getHobbies().add("Reading");
         member.getHobbies().add("Coding");
 
+        Assertions.assertNotNull(member);
         entityManager.persist(member);
         entityTransaction.commit();
         entityManager.close();
     }
 
+    @Test
+    void updateDataMap(){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        Member member = entityManager.find(Member.class, 2);
+        member.setSkills(new HashMap<>());
+        member.getSkills().put("Java", 90);
+        member.getSkills().put("Kotlin", 85);
+        member.getSkills().put("C++", 80);
+
+        entityManager.merge(member);
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
 }
