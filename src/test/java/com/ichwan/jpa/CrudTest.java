@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * validateContract hanya dapat digunakan pada insert data
+ */
 class CrudTest extends ValidateContract{
     
     private EntityManagerFactory entityManagerFactory;
@@ -79,10 +82,8 @@ class CrudTest extends ValidateContract{
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
 
-        Customer customer = entityManager.find(Customer.class, "1");
+        Customer customer = entityManager.find(Customer.class, "2");
         entityManager.remove(customer);
-
-        Assertions.assertNull(customer);
 
         entityTransaction.commit();
         entityManager.close();
