@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +24,9 @@ public class Member {
 
     @Embedded
     private Name name;
+
+    @ElementCollection
+    @CollectionTable(name = "hobbies", joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"))
+    @Column(name = "name")
+    private List<String> hobbies;
 }
