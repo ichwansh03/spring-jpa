@@ -8,3 +8,4 @@
 
 ## Related Article
 ![Implementasi CRUD Menggunakan Java Persistance API dan Hibernate ORM](https://medium.com/@ichwansholihin/implementasi-crud-menggunakan-java-persistance-api-dan-hibernate-orm-a96f0987d5eb)
+
