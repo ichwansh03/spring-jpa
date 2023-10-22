@@ -1,5 +1,7 @@
 package com.ichwan.jpa;
 
+import com.ichwan.jpa.entity.onetomany.Brand;
+import com.ichwan.jpa.entity.onetomany.Product;
 import com.ichwan.jpa.entity.onetoone.Credential;
 import com.ichwan.jpa.entity.onetoone.User;
 import com.ichwan.jpa.entity.onetoone.Wallet;
@@ -84,4 +86,35 @@ class EntityRelationshipTest {
         transaction.commit();
         manager.close();
     }
+
+    @Test
+    void oneToOneInsertProductTest() {
+        EntityManagerFactory managerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager manager = managerFactory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Brand brand = new Brand();
+        brand.setId("xiaomi");
+        brand.setName("XIAOMI");
+        manager.persist(brand);
+
+        Product product = new Product();
+        product.setId("p1");
+        product.setName("Xiaomi REDMI 6A");
+        product.setBrand(brand);
+        product.setPrice(1000000L);
+        manager.persist(product);
+
+        Product product2 = new Product();
+        product2.setId("p2");
+        product2.setName("Xiaomi REDMI 5A");
+        product2.setBrand(brand);
+        product2.setPrice(800000L);
+        manager.persist(product2);
+
+        transaction.commit();
+        manager.close();
+    }
+
 }
