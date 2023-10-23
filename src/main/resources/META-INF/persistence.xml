@@ -13,6 +13,9 @@
         <class>com.ichwan.jpa.entity.onetoone.Credential</class>
         <class>com.ichwan.jpa.entity.onetomany.Brand</class>
         <class>com.ichwan.jpa.entity.onetomany.Product</class>
+        <class>com.ichwan.jpa.entity.singletable.Employee</class>
+        <class>com.ichwan.jpa.entity.singletable.Manager</class>
+        <class>com.ichwan.jpa.entity.singletable.VicePresident</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
