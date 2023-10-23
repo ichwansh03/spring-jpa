@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
 
+import java.util.HashSet;
+
 class EntityRelationshipTest {
 
     @Test
@@ -117,4 +119,39 @@ class EntityRelationshipTest {
         manager.close();
     }
 
+    @Test
+    void manyToManyInsertTest() {
+        EntityManagerFactory managerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager manager = managerFactory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        User user = manager.find(User.class, "ichwan");
+        user.setLikes(new HashSet<>());
+
+        Product product1 = manager.find(Product.class, "p1");
+        Product product2 = manager.find(Product.class, "p2");
+
+        user.getLikes().add(product1);
+        user.getLikes().add(product2);
+
+        manager.merge(user);
+
+        transaction.commit();
+        manager.close();
+    }
+
+    @Test
+    void manyToManyUpdateTest() {
+        EntityManagerFactory managerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager manager = managerFactory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        User user = manager.find(User.class, "ichwan");
+        user.getLikes().forEach(product -> System.out.println(product.getName()));
+
+        transaction.commit();
+        manager.close();
+    }
 }
