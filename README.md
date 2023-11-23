@@ -15,6 +15,8 @@
 * Anotasi `@Transactional` digunakan untuk melakukan management transaksi jika menggunakan query/JPA secara manual. Anotasi ini tidak dapat digunakan pada class unit-test. [Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html)
 * Menggunakan JPA QL berdasarkan nama method pada docs berikut. [Docs](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html)
 * Jika ingin menggunakan query relation, buat di interface repository child lalu tambahkan method findByNamaTableParent_Field.
+* Default `@Transaction` repository adalah `readOnly = true`, jika ingin diubah, ubah versi transaction nya di method.
+* Anotasi `@Modifying` hanya digunakan untuk query update dan delete.
 
 ## Related Article
 [Implementasi CRUD Menggunakan Java Persistance API dan Hibernate ORM](https://medium.com/@ichwansholihin/implementasi-crud-menggunakan-java-persistance-api-dan-hibernate-orm-a96f0987d5eb)
