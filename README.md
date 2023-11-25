@@ -22,6 +22,9 @@
 * Jika relasinya ke primary key dari table lain, gunakan Join Table inheritance.
 * Jika memiliki perbedaan column yg signifikan pada setiap table, gunakan table per class inheritance. Table per class inheritance memiliki konsep yg sama seperti Join Columnn, namun jika menggunakan inheritance ini akan sangat lambat jika langsung query ke parent class.
 * Jika terdapat column yg sama pada setiap entity namun bukan bagian dari IS-A relationship, gunakan `MappedSuperClass`, konsepnya sama dengan abstract class dan class ini disarankan menggunaan abstract agar tidak dibaca sebagai entity dan dapat diturunkan pada setiap entity yg membutuhkan.
+* Pada JPA terdapat fitur Locking. Locking adalah fitur untuk mengunci data jika terdapat request perubahan ke database.
+* Optimistic Locking digunakan untuk mengunci satu request data yg melakukan perubahan paling cepat, jika terjadi perubahan lain maka yg paling lambat akan error.
+* Pessimistic Locking digunakan untuk mengunci satu request data yg melakukan perubahan, jika terdapat perubahan data lagi maka data lainnya harus menunggu terlebih dahulu. Tambahkan `@Lock(LockModeType.PESSIMISTIC_WRITE)` pada method query di repository. [Docs](https://www.baeldung.com/java-jpa-transaction-locks)
 
 ## Related Article
 [Implementasi CRUD Menggunakan Java Persistance API dan Hibernate ORM](https://medium.com/@ichwansholihin/implementasi-crud-menggunakan-java-persistance-api-dan-hibernate-orm-a96f0987d5eb)
