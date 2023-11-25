@@ -25,6 +25,7 @@
 * Pada JPA terdapat fitur Locking. Locking adalah fitur untuk mengunci data jika terdapat request perubahan ke database.
 * Optimistic Locking digunakan untuk mengunci satu request data yg melakukan perubahan paling cepat, jika terjadi perubahan lain maka yg paling lambat akan error.
 * Pessimistic Locking digunakan untuk mengunci satu request data yg melakukan perubahan, jika terdapat perubahan data lagi maka data lainnya harus menunggu terlebih dahulu. Tambahkan `@Lock(LockModeType.PESSIMISTIC_WRITE)` pada method query di repository. [Docs](https://www.baeldung.com/java-jpa-transaction-locks)
+* Coba pelajari [flywaydb](https://flywaydb.org/) untuk database migration tools
 
 ## Related Article
 [Implementasi CRUD Menggunakan Java Persistance API dan Hibernate ORM](https://medium.com/@ichwansholihin/implementasi-crud-menggunakan-java-persistance-api-dan-hibernate-orm-a96f0987d5eb)
